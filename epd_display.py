@@ -3,11 +3,12 @@
 import sys
 import os
 import logging
-from waveshare_epd import epd2in13b_V4
+from lib.waveshare_epd import epd2in13b_V4
 import time
 from PIL import Image, ImageDraw, ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
+
 
 class EPDDisplay:
     def __init__(self):
