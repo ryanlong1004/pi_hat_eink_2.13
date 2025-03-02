@@ -6,6 +6,7 @@ from waveshare_epd import epd2in13b_V4
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 def main():
     try:
         display = EPDDisplay()
@@ -21,5 +22,6 @@ def main():
         epd2in13b_V4.epdconfig.module_exit(cleanup=True)
         exit()
 
-listif __name__ == "__main__":
+
+if __name__ == "__main__":
     main()
