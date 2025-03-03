@@ -11,10 +11,10 @@ def main():
     try:
         display = EPDDisplay()
         display.init_and_clear()
-        display.draw_image("horizontal")
-        display.draw_image("vertical")
+        # display.draw_image("horizontal")
+        # display.draw_image("vertical")
         display.display_bmp_files("bluehound.bmp")
-        display.clear_and_sleep()
+        # display.clear_and_sleep()
     except IOError as e:
         logging.info(e)
     except KeyboardInterrupt:
