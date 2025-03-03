@@ -6,12 +6,13 @@ from lib.waveshare_epd import epd2in13b_V4
 
 logging.basicConfig(level=logging.DEBUG)
 
+
 def main():
     try:
         display = EPDDisplay()
         display.init_and_clear()
-        display.draw_image("horizontal", FONT_20)
-        display.draw_image("vertical", FONT_18)
+        display.draw_image("horizontal")
+        display.draw_image("vertical")
         display.display_bmp_files()
         display.clear_and_sleep()
     except IOError as e:
@@ -20,6 +21,7 @@ def main():
         logging.info("ctrl + c:")
         epd2in13b_V4.epdconfig.module_exit(cleanup=True)
         exit()
+
 
 if __name__ == "__main__":
     main()

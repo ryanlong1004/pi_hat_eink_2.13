@@ -28,7 +28,7 @@ class EPDDisplay:
         self.epd.Clear()
         time.sleep(1)
 
-    def draw_image(self, orientation, font):
+    def draw_image(self, orientation):
         if orientation == "horizontal":
             logging.info("1.Drawing on the Horizontal image...")
             image_size = (self.epd.height, self.epd.width)  # 250*122
@@ -41,9 +41,9 @@ class EPDDisplay:
         drawblack = ImageDraw.Draw(black_image)
         drawry = ImageDraw.Draw(ry_image)
 
-        drawblack.text((10, 0), "hello world", font=font, fill=0)
-        drawblack.text((10, 20), "2.13inch e-Paper b V4", font=font, fill=0)
-        drawblack.text((120, 0), "微雪电子", font=font, fill=0)
+        drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
+        drawblack.text((10, 20), "2.13inch e-Paper b V4", font=FONT_20, fill=0)
+        drawblack.text((120, 0), "微雪电子", font=FONT_20, fill=0)
         drawblack.line((20, 50, 70, 100), fill=0)
         drawblack.line((70, 50, 20, 100), fill=0)
         drawblack.rectangle((20, 50, 70, 100), outline=0)
