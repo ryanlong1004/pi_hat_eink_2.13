@@ -9,6 +9,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 logging.basicConfig(level=logging.DEBUG)
 
+FONT_20 = ImageFont.truetype(os.path.join("./font", "Font.ttc"), 20)
+FONT_18 = ImageFont.truetype(os.path.join("./font", "Font.ttc"), 18)
+
 
 class EPDDisplay:
     def __init__(self):
@@ -17,8 +20,6 @@ class EPDDisplay:
         if os.path.exists(self.libdir):
             sys.path.append(self.libdir)
         self.epd = epd2in13b_V4.EPD()
-        self.font20 = ImageFont.truetype(os.path.join(self.picdir, "Font.ttc"), 20)
-        self.font18 = ImageFont.truetype(os.path.join(self.picdir, "Font.ttc"), 18)
 
     def init_and_clear(self):
         logging.info("epd2in13b_V4 Demo")
@@ -27,15 +28,22 @@ class EPDDisplay:
         self.epd.Clear()
         time.sleep(1)
 
-    def draw_horizontal_image(self):
-        logging.info("1.Drawing on the Horizontal image...")
-        HBlackimage = Image.new("1", (self.epd.height, self.epd.width), 255)  # 250*122
-        HRYimage = Image.new("1", (self.epd.height, self.epd.width), 255)  # 250*122
-        drawblack = ImageDraw.Draw(HBlackimage)
-        drawry = ImageDraw.Draw(HRYimage)
-        drawblack.text((10, 0), "hello world", font=self.font20, fill=0)
-        drawblack.text((10, 20), "2.13inch e-Paper b V4", font=self.font20, fill=0)
-        drawblack.text((120, 0), "微雪电子", font=self.font20, fill=0)
+    def draw_image(self, orientation, font):
+        if orientation == "horizontal":
+            logging.info("1.Drawing on the Horizontal image...")
+            image_size = (self.epd.height, self.epd.width)  # 250*122
+        else:
+            logging.info("2.Drawing on the Vertical image...")
+            image_size = (self.epd.width, self.epd.height)  # 122*250
+
+        black_image = Image.new("1", image_size, 255)
+        ry_image = Image.new("1", image_size, 255)
+        drawblack = ImageDraw.Draw(black_image)
+        drawry = ImageDraw.Draw(ry_image)
+
+        drawblack.text((10, 0), "hello world", font=font, fill=0)
+        drawblack.text((10, 20), "2.13inch e-Paper b V4", font=font, fill=0)
+        drawblack.text((120, 0), "微雪电子", font=font, fill=0)
         drawblack.line((20, 50, 70, 100), fill=0)
         drawblack.line((70, 50, 20, 100), fill=0)
         drawblack.rectangle((20, 50, 70, 100), outline=0)
@@ -44,25 +52,8 @@ class EPDDisplay:
         drawry.arc((140, 50, 190, 100), 0, 360, fill=0)
         drawry.rectangle((80, 50, 130, 100), fill=0)
         drawry.chord((85, 55, 125, 95), 0, 360, fill=1)
-        self.epd.display(self.epd.getbuffer(HBlackimage), self.epd.getbuffer(HRYimage))
-        time.sleep(2)
 
-    def draw_vertical_image(self):
-        logging.info("2.Drawing on the Vertical image...")
-        LBlackimage = Image.new("1", (self.epd.width, self.epd.height), 255)  # 122*250
-        LRYimage = Image.new("1", (self.epd.width, self.epd.height), 255)  # 122*250
-        drawblack = ImageDraw.Draw(LBlackimage)
-        drawry = ImageDraw.Draw(LRYimage)
-        drawblack.text((2, 0), "hello world", font=self.font18, fill=0)
-        drawblack.text((2, 20), "2.13 epd b V4", font=self.font18, fill=0)
-        drawblack.text((20, 50), "微雪电子", font=self.font18, fill=0)
-        drawblack.line((10, 90, 60, 140), fill=0)
-        drawblack.line((60, 90, 10, 140), fill=0)
-        drawblack.rectangle((10, 90, 60, 140), outline=0)
-        drawry.rectangle((10, 150, 60, 200), fill=0)
-        drawry.arc((15, 95, 55, 135), 0, 360, fill=0)
-        drawry.chord((15, 155, 55, 195), 0, 360, fill=1)
-        self.epd.display(self.epd.getbuffer(LBlackimage), self.epd.getbuffer(LRYimage))
+        self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
         time.sleep(2)
 
     def display_bmp_files(self):
