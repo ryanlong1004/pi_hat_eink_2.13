@@ -60,25 +60,19 @@ class EPDDisplay:
         self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
         time.sleep(2)
 
-    def display_bmp_files(self, image_path):
-        logging.info("3. Reading bmp file")
-        black_image = Image.open(os.path.join(self.picdir, image_path))
-        ry_image = Image.open(os.path.join(self.picdir, image_path))
-        self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
+    def display_bmp_files(self):
+        logging.info("3.read bmp file")
+        Blackimage = Image.open(os.path.join(self.picdir, "2in13b_V4b.bmp"))
+        RYimage = Image.open(os.path.join(self.picdir, "2in13b_V4b.bmp"))
+        self.epd.display(self.epd.getbuffer(Blackimage), self.epd.getbuffer(RYimage))
         time.sleep(2)
 
-        logging.info("4. Reading bmp file on window")
-        black_image_window = Image.new(
-            "1", (self.epd.height, self.epd.width), 255
-        )  # 250*122
-        ry_image_window = Image.new(
-            "1", (self.epd.height, self.epd.width), 255
-        )  # 250*122
-        new_image = Image.open(os.path.join(self.picdir, "100x100.bmp"))
-        black_image_window.paste(new_image, (0, 0))
-        self.epd.display(
-            self.epd.getbuffer(black_image_window), self.epd.getbuffer(ry_image_window)
-        )
+        logging.info("4.read bmp file on window")
+        blackimage1 = Image.new("1", (self.epd.height, self.epd.width), 255)  # 250*122
+        redimage1 = Image.new("1", (self.epd.height, self.epd.width), 255)  # 250*122
+        newimage = Image.open(os.path.join(self.picdir, "100x100.bmp"))
+        blackimage1.paste(newimage, (0, 0))
+        self.epd.display(self.epd.getbuffer(blackimage1), self.epd.getbuffer(redimage1))
 
     def clear_and_sleep(self):
         logging.info("Clear...")
