@@ -14,7 +14,7 @@ def get_font(size):
     return ImageFont.truetype(os.path.join("./font", "Font.ttc"), size)
 
 
-FONT_20 = get_font(20)
+FONT_20 = get_font(20)  # 26 max characters
 FONT_18 = get_font(18)
 
 
@@ -43,7 +43,7 @@ class EPDDisplay:
         ry_image = Image.new("1", image_size, 255)
         drawblack = ImageDraw.Draw(black_image)
 
-        drawblack.text((10, 0), text, font=FONT_20, fill=0)
+        drawblack.text((10, 0), text, font=FONT_18, fill=0)
 
         self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
         time.sleep(2)
