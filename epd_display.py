@@ -44,7 +44,7 @@ class EPDDisplay:
         drawblack = ImageDraw.Draw(black_image)
         drawry = ImageDraw.Draw(ry_image)
 
-        # drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
+        drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
         # drawblack.text((10, 20), "2.13inch e-Paper b V4", font=FONT_20, fill=0)
         # drawblack.text((120, 0), "微雪电子", font=FONT_20, fill=0)
         # drawblack.line((20, 50, 70, 100), fill=0)
