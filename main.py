@@ -17,6 +17,8 @@ def main():
         display.draw_image("vertical")
         time.sleep(10)
         display.display_bmp_files("bluehound.bmp")
+        time.sleep(5)
+        display.diplay_bmp_files_on_window("bluehound.bmp")
         # display.clear_and_sleep()
     except IOError as e:
         logging.info(e)
