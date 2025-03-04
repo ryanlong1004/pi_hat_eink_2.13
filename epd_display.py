@@ -14,8 +14,8 @@ def get_font(size):
     return ImageFont.truetype(os.path.join("./font", "Font.ttc"), size)
 
 
-FONT_20 = get_font(20)  # 26 max characters
-FONT_18 = get_font(18)
+FONT_20 = get_font(20)  # 26 max characters horizontally
+FONT_18 = get_font(18)  # 28 max characters horizontally
 
 
 class EPDDisplay:
