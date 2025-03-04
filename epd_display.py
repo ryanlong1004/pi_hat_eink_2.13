@@ -56,6 +56,7 @@ class EPDDisplay:
         # drawry.rectangle((80, 50, 130, 100), fill=0)
         # drawry.chord((85, 55, 125, 95), 0, 360, fill=1)
 
+        self.epd.display(black_image, ry_image)
         self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
         time.sleep(2)
 
