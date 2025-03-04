@@ -19,7 +19,7 @@ def main():
         # time.sleep(10)
         # display.draw_image("vertical")
         # time.sleep(10)
-        display.display_bmp_files("out.png")
+        display.display_bmp_files("processed_fear_and_greed_index.bmp")
         # time.sleep(5)
         # display.diplay_bmp_files_on_window("bluehound.bmp")
         # display.clear_and_sleep()

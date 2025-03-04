@@ -1,15 +1,12 @@
-import http.client
+import requests
 
-conn = http.client.HTTPSConnection("fear-and-greed-index.p.rapidapi.com")
-
+url = "https://fear-and-greed-index.p.rapidapi.com/v1/fgi"
 headers = {
     "x-rapidapi-key": "WQLmJSQsxImsho6Phz1NE21seLq6p1trIPMjsnwN1hLaUUMRX5",
     "x-rapidapi-host": "fear-and-greed-index.p.rapidapi.com",
 }
 
-conn.request("GET", "/v1/fgi", headers=headers)
+response = requests.get(url, headers=headers)
+data = response.json()
 
-res = conn.getresponse()
-data = res.read()
-
-print(data.decode("utf-8"))
+print(data)
