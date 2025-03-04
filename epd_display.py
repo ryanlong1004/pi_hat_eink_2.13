@@ -38,7 +38,9 @@ class EPDDisplay:
         else:
             logging.info("2.Drawing on the Vertical image...")
             image_size = (self.epd.width, self.epd.height)
+
         black_image = Image.new("1", image_size, 255)
+        ry_image = Image.new("1", image_size, 255)
         drawblack = ImageDraw.Draw(black_image)
         drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
 
