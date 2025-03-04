@@ -3,15 +3,10 @@
 import sys
 import os
 
-picdir = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pic"
-)
-libdir = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "lib"
-)
-fontdir = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "lib"
-)
+picdir = "./pic"
+libdir = "./lib"
+fontdir = "./font"
+
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
