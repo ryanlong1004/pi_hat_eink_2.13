@@ -31,6 +31,17 @@ class EPDDisplay:
         self.clear()
         time.sleep(1)
 
+    def draw_text(self, orientation):
+        black_image = Image.new("1", image_size, 255)
+        drawblack = ImageDraw.Draw(black_image)
+        if orientation == "horizontal":
+            logging.info("1.Drawing on the Horizontal image...")
+            image_size = (self.epd.height, self.epd.width)
+        else:
+            logging.info("2.Drawing on the Vertical image...")
+            image_size = (self.epd.width, self.epd.height)
+        drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
+
     def draw_image(self, orientation):
         if orientation == "horizontal":
             logging.info("1.Drawing on the Horizontal image...")

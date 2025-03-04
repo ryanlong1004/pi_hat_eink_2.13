@@ -12,13 +12,16 @@ def main():
     try:
         display = EPDDisplay()
         display.init_and_clear()
-        display.draw_image("horizontal")
-        time.sleep(10)
-        display.draw_image("vertical")
-        time.sleep(10)
-        display.display_bmp_files("bluehound.bmp")
-        time.sleep(5)
-        display.diplay_bmp_files_on_window("bluehound.bmp")
+        display.draw_text(
+            "Hello Super Godzilla making this line really long on purpose"
+        )
+        # display.draw_image("horizontal")
+        # time.sleep(10)
+        # display.draw_image("vertical")
+        # time.sleep(10)
+        # display.display_bmp_files("bluehound.bmp")
+        # time.sleep(5)
+        # display.diplay_bmp_files_on_window("bluehound.bmp")
         # display.clear_and_sleep()
     except IOError as e:
         logging.info(e)
