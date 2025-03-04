@@ -9,6 +9,9 @@ picdir = os.path.join(
 libdir = os.path.join(
     os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "lib"
 )
+fontdir = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "lib"
+)
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
@@ -31,8 +34,8 @@ try:
 
     # Drawing on the image
     logging.info("Drawing")
-    font20 = ImageFont.truetype(os.path.join(picdir, "Font.ttc"), 20)
-    font18 = ImageFont.truetype(os.path.join(picdir, "Font.ttc"), 18)
+    font20 = ImageFont.truetype(os.path.join(fontdir, "Font.ttc"), 20)
+    font18 = ImageFont.truetype(os.path.join(fontdir, "Font.ttc"), 18)
 
     # Drawing on the Horizontal image
     logging.info("1.Drawing on the Horizontal image...")
