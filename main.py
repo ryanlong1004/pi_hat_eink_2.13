@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import logging
+import time
 from epd_display import EPDDisplay
 from lib.waveshare_epd import epd2in13b_V4
 
@@ -11,8 +12,10 @@ def main():
     try:
         display = EPDDisplay()
         display.init_and_clear()
-        # display.draw_image("horizontal")
-        # display.draw_image("vertical")
+        display.draw_image("horizontal")
+        time.sleep(10)
+        display.draw_image("vertical")
+        time.sleep(10)
         display.display_bmp_files("bluehound.bmp")
         # display.clear_and_sleep()
     except IOError as e:
