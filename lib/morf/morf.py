@@ -20,7 +20,7 @@ def process_image(input_path, output_path):
     grayscale_image = image.convert("L")
 
     # Resize to 255x122
-    resized_image = grayscale_image.resize((255, 122))
+    resized_image = grayscale_image.resize((250, 122))
 
     # Save the processed image
     resized_image.save(output_path)
