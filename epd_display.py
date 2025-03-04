@@ -43,6 +43,7 @@ class EPDDisplay:
         ry_image = Image.new("1", image_size, 255)
         drawblack = ImageDraw.Draw(black_image)
         drawblack.text((10, 0), "hello world", font=FONT_20, fill=0)
+        self.epd.display(self.epd.getbuffer(black_image), self.epd.getbuffer(ry_image))
 
     def draw_image(self, orientation):
         if orientation == "horizontal":
