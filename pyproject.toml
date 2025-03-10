@@ -8,5 +8,6 @@ dependencies = [
     "matplotlib>=3.10.1",
     "pillow>=11.1.0",
     "plotly>=6.0.0",
+    "psutil>=7.0.0",
     "requests>=2.32.3",
 ]

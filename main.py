@@ -10,11 +10,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 def main():
     try:
-        display = EPDDisplay()
-        display.init_and_clear()
-        display.draw_text(
-            "Hello Super Godzilla making this line really long on purpose"
-        )
+        write("Working")
         # display.draw_image("horizontal")
         # time.sleep(10)
         # display.draw_image("vertical")
@@ -29,6 +25,12 @@ def main():
         logging.info("ctrl + c:")
         epd2in13b_V4.epdconfig.module_exit(cleanup=True)
         exit()
+
+
+def write(txt: str):
+    display = EPDDisplay()
+    display.init_and_clear()
+    display.draw_text(txt)
 
 
 if __name__ == "__main__":
