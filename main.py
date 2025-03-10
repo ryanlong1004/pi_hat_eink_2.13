@@ -1,21 +1,28 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 import logging
-import time
+import typer
 from epd_display import EPDDisplay
 from lib.waveshare_epd import epd2in13b_V4
 
 logging.basicConfig(level=logging.DEBUG)
+app = typer.Typer()
 
 
-def main():
+def write(txt: str):
+    display = EPDDisplay()
+    display.init_and_clear()
+    display.draw_text(txt)
+
+
+@app.command()
+def main(txt: str = "Working"):
     try:
-        write("Working")
+        write(txt)
         # display.draw_image("horizontal")
         # time.sleep(10)
         # display.draw_image("vertical")
         # time.sleep(10)
-        # display.display_bmp_files("processed_fear_and_greed_index.png")
         # time.sleep(5)
         # display.diplay_bmp_files_on_window("bluehound.bmp")
         # display.clear_and_sleep()
@@ -27,11 +34,5 @@ def main():
         exit()
 
 
-def write(txt: str):
-    display = EPDDisplay()
-    display.init_and_clear()
-    display.draw_text(txt)
-
-
 if __name__ == "__main__":
-    main()
+    app()
